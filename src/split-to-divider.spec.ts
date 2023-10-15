@@ -37,4 +37,15 @@ describe('Разделить число на делители', () => {
         }
         console.log(map)
     });
+
+    it('Не до конца разрбранные числа', () => {
+        const result = [];
+        for (let i = 2; i <= 10000; i++) {
+            const split = splitToDivider(i);
+            if (split[split.length - 1] !== 1) {
+                result.push(`${i}: ${split}`)
+            }
+        }
+        console.log(result)
+    })
 });
