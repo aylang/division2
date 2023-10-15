@@ -1,7 +1,7 @@
 import {primeNumbers} from "./prime-numbers";
 
 describe('Простые числа', () => {
-    it('Получение от 0 до заданного числа', () => {
+    it('Решето Эратосфена', () => {
         const start = Date.now();
         expect(primeNumbers(2)).toEqual([2]);
         expect(primeNumbers(3)).toEqual([2,3]);
