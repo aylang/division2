@@ -23,20 +23,24 @@ describe('Разделить число на делители', () => {
         // expect(splitToDivider(20)).toEqual([2,2,5,1]);
         // expect(splitToDivider(21)).toEqual([3,7,1]);
         // expect(splitToDivider(98)).toEqual([2,11,1]);
+
+        console.log('841: ',splitToDivider(1000000))
+    });
+
+    it('Частота применения признака делимости на чесло', () => {
         const map = new Map();
-        for (let i = 2; i <= 1000; i++) {
-            // console.log(i)
-            // console.log(splitToDivider(i))
+        for (let i = 2; i <= 10000; i++) {
             const split = splitToDivider(i);
+            // Не смотрю последние два числа, тк последнее число = 1,
+            // а предпоследнее простое число,
+            // которое сравниваю с таблицей простых чисел,
+            // те не подбираю по признаку делимости.
             for (let j = 0; j < (split.length - 2); j++) {
                 map.set(split[j], (map.get(split[j]) ?? 0) + 1)
             }
-            // split.forEach(divider => {
-            //     map.set(divider, (map.get(divider) ?? 0) + 1)
-            // })
         }
         console.log(map)
-    });
+    })
 
     it('Не до конца разрбранные числа', () => {
         const result = [];
@@ -44,6 +48,17 @@ describe('Разделить число на делители', () => {
             const split = splitToDivider(i);
             if (split[split.length - 1] !== 1) {
                 result.push(`${i}: ${split}`)
+            }
+        }
+        console.log(result)
+    })
+
+    it('Подбор делителей методом перебора', () => {
+        const tested = 1000000;
+        const result = [];
+        for (let i = 1; i <= tested; i++) {
+            if (tested % i === 0) {
+                result.push(i)
             }
         }
         console.log(result)

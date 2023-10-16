@@ -1,6 +1,6 @@
 // Разделить на делители
 import {primeNumbers} from "./prime-numbers";
-import {isDivided2, isDivided3, isDivided5, isDivided7} from "./sign-of-division";
+import {isDivided2, isDivided3, isDivided5, isDivided7, isDivided9} from "./sign-of-division";
 
 export function splitToDivider(value: number): number[] {
     const prime = primeNumbers(value);
@@ -28,6 +28,18 @@ export function splitToDivider(value: number): number[] {
             const other = find(value / 7);
             const result = [7, ...other];
             return result;
+        }
+        if (isDivided9(value)) {
+            const other = find(value / 9);
+            const result = [9, ...other];
+            return result;
+        }
+        for (const primeNumber of prime.slice(4)) {
+            if (value % primeNumber === 0) {
+                const other = find(value / primeNumber);
+                const result = [primeNumber, ...other];
+                return result;
+            }
         }
         return [];
     }
